@@ -25,11 +25,7 @@ SECRET_KEY = 'django-insecure-=hxbxxt-93y@o=5x*7w9wsiohxs$-dqbx8*syya!0o0ecqu@et
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-import os
-CODESPACE_NAME = os.environ.get('CODESPACE_NAME')
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-if CODESPACE_NAME:
-    ALLOWED_HOSTS.append(f'{CODESPACE_NAME}-8000.app.github.dev')
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -122,7 +118,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-AUTH_USER_MODEL = 'octofit_tracker.User'
 
 TIME_ZONE = 'UTC'
 
