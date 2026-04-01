@@ -15,7 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
+def landing_page(request):
+    return HttpResponse('''
+        <html>
+        <head><title>OctoFit Tracker API</title></head>
+        <body style="font-family:sans-serif; text-align:center; margin-top:10vh; background:linear-gradient(135deg,#f0f4f9,#e0e7ff);">
+            <h1 style="color:#1976d2;">Welcome to the OctoFit Tracker API</h1>
+            <p style="font-size:1.2em;">Visit <a href="/api/">/api/</a> for available endpoints.</p>
+        </body>
+        </html>
+    ''')
 import os
 
 def api_root(request):
@@ -33,6 +43,7 @@ def api_root(request):
     })
 
 urlpatterns = [
+    path('', landing_page, name='landing-page'),
     path('admin/', admin.site.urls),
     path('api/', api_root, name='api-root'),
     path('api/', include('octofit_tracker.urls_api')),
